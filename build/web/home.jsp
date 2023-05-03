@@ -4,6 +4,12 @@
     Author     : QI
 --%>
 
+<%@page import="model.User" %>
+<%
+    User uSession = (User) session.getAttribute("userNameSession");
+    User u = (User) request.getAttribute("userName");
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +18,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bem vindo <%= request.getAttribute("userName") %>!</h1>
+        <h1>Bem vindo <%= uSession %>!</h1>
+        <h1>Bem vindo <%= u %>!</h1>
     </body>
 </html>
