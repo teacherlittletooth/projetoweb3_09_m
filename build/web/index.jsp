@@ -4,6 +4,12 @@
     Author     : QI
 --%>
 
+<%
+    if(session.getAttribute("userNameSession") != null){
+        response.sendRedirect("home.jsp");
+    }
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

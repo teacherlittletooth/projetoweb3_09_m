@@ -7,7 +7,6 @@
 <%@page import="model.User" %>
 <%
     User uSession = (User) session.getAttribute("userNameSession");
-    User u = (User) request.getAttribute("userName");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,10 +14,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Animaland</title>
     </head>
     <body>
-        <h1>Bem vindo <%= uSession %>!</h1>
-        <h1>Bem vindo <%= u %>!</h1>
+        <%@include file="session/verify.jsp" %>
+        <p>
+            Bem vindo <%= (uSession != null) ? uSession.getUserName() : "" %>!
+            <button onclick="window.location.href='session/logout.jsp'">Logout</button>
+        </p>
     </body>
 </html>
