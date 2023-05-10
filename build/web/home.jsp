@@ -19,8 +19,11 @@
     <body>
         <%@include file="session/verify.jsp" %>
         <p>
-            Bem vindo <%= (uSession != null) ? uSession.getUserName() : "" %>!
+            Bem vindo <%= (uSession != null) ? uSession.getUserName() : "visitante" %>!
             <button onclick="window.location.href='session/logout.jsp'">Logout</button>
         </p>
+        <hr>
+        <button onclick="window.location.href='cadastro.jsp'">CADASTRAR</button>
+        <button onclick="window.location.href='listar.jsp'">LISTAR</button>
     </body>
 </html>
