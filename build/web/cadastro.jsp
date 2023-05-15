@@ -14,7 +14,7 @@
     <body>
         <h1>CADASTRO</h1>
         <hr>
-        <form action="#" method="post">
+        <form action="CadastroProprietario" method="post">
             <h3>Novo Proprietário</h3>
             <input type="text" name="nome" placeholder="Nome do proprietário" required>
             
