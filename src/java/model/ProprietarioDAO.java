@@ -75,4 +75,60 @@ public class ProprietarioDAO {
         prep.close();
     }
     
+    
+    //DELETE
+    public void deleteProprietario(int i) throws SQLException {
+        String query = "DELETE FROM proprietarios "
+                + "WHERE id_proprietario = " + i;
+        
+        PreparedStatement prep = conn.prepareStatement(query);
+        
+        prep.execute();
+        prep.close();
+    }
+    
+    
+    //LIST BY ID (Selecionar apenas um registro)
+    public Proprietario listById(int id) throws SQLException {
+        Proprietario p = new Proprietario();
+        
+        String sql = "SELECT * FROM proprietarios "
+                + "WHERE id_proprietario = " + id;
+        
+        PreparedStatement prep = conn.prepareStatement(sql);
+        ResultSet result = prep.executeQuery();
+        
+        if(result.next()) {
+            p.setIdProprietario(result.getInt("id_proprietario"));
+            p.setNome(result.getString("nome"));
+            p.setCpf(result.getString("cpf"));
+            p.setCep(result.getString("cep"));
+            p.setCidade(result.getString("cidade"));
+            p.setLogradouro(result.getString("logradouro"));
+            p.setNumero(result.getInt("numero"));
+        }
+        
+        return p;
+    }
+    
+    
+    //UPDATE
+    public void updateProprietario(Proprietario p) throws SQLException {
+        String sql = "UPDATE proprietarios SET nome = ?,"
+                + "cpf = ?, logradouro = ?, numero = ?,"
+                + "cep = ?, cidade = ? "
+                + "WHERE id_proprietario = ?";
+        
+        PreparedStatement prep = conn.prepareStatement(sql);
+        prep.setString(1, p.getNome());
+        prep.setString(2, p.getCpf());
+        prep.setString(3, p.getLogradouro());
+        prep.setInt(4, p.getNumero());
+        prep.setString(5, p.getCep());
+        prep.setString(6, p.getCidade());
+        prep.setInt(7, p.getIdProprietario());
+        
+        prep.execute();
+        prep.close();
+    }
 }

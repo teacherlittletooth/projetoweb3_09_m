@@ -42,8 +42,10 @@
                     <td><%= p.getNumero() %></td>
                     <td><%= p.getCep() %></td>
                     <td><%= p.getCidade() %></td>
-                    <td>📝</td>
-                    <td>❌</td>
+                    <td>
+                        <a href="UpdateProprietario?cod=<%= p.getIdProprietario() %>">📝</a>
+                    </td>
+                    <td onclick="confirmDelete(<%= p.getIdProprietario() %>)">❌</td>
                 </tr>
                 <%
                     }
@@ -53,5 +55,15 @@
 
         <hr>
         <a href="home.jsp">Página Inicial</a>
+        
+        <script>
+            function confirmDelete(cod) {
+                if(confirm("Deseja realmente excluir?")){
+                    window.location.replace("DeleteProprietario?cod=" + cod);
+                } else {
+                    alert("Exclusão cancelada!");
+                }
+            }
+        </script>
     </body>
 </html>
