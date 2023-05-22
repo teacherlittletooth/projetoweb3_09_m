@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.sql.SQLException;
 import model.User;
 
 @WebServlet(name = "ValidaLogin", urlPatterns = {"/verifica_usuario.java"})
@@ -24,6 +25,7 @@ public class ValidaLogin extends HttpServlet {
         
         User objUser = new User(this.user, this.pass);
         
+        try {
         if(objUser.isLogged()) {
             HttpSession session = request.getSession();
             session.setAttribute("userNameSession", objUser);
@@ -38,22 +40,9 @@ public class ValidaLogin extends HttpServlet {
                   + "</script>"
             );
         }
-        
-        
-        
-        
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ValidaLogin</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ValidaLogin at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+    } catch(ClassNotFoundException | SQLException erro){
+        //Código de erro
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

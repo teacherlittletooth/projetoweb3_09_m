@@ -25,7 +25,7 @@
             <img src="img/logotipo.jpg" alt="Logotipo da loja" width="250"/>
             <br>
             
-            <input type="email" name="user" id="user" placeholder="Insira seu email" required>
+            <input type="text" name="user" id="user" placeholder="Insira o nome de usuário" required>
             <br><br>
             
             <input type="password" name="pass" id="pass" placeholder="Insira sua senha" required>

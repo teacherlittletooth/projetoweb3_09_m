@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 10-Maio-2023 às 16:49
+-- Tempo de geração: 22-Maio-2023 às 17:06
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -22,9 +22,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE DATABASE pet_shop;
-
 USE pet_shop;
-
 -- --------------------------------------------------------
 
 --
@@ -72,10 +70,10 @@ CREATE TABLE `proprietarios` (
 --
 
 INSERT INTO `proprietarios` (`id_proprietario`, `nome`, `cpf`, `logradouro`, `numero`, `cep`, `cidade`) VALUES
-(1, 'Julho Costa', '000.000.000-00', 'Avenida Tal', 111, '11111-111', 'Cachoeirinha'),
-(2, 'Novembra Silva', '222.222.222-22', 'Rua Qualquer', 222, '22222-222', 'Gravataí'),
+(2, 'Novembra Silva', '222.222.222-44', 'Rua Qualquer', 226, '22222-333', 'Viamão'),
 (3, 'Agosto Augusto', '333.333.333-33', 'Beco sem Saída', 333, '33333-333', 'Novo Hamburg'),
-(4, 'Janeiro Fevereiro', '444.444.444-44', 'Travessa Atravessada', 444, '44444-444', 'Sapucaia');
+(4, 'Janeiro Fevereiro', '444.444.444-44', 'Travessa Atravessada', 444, '44444-444', 'Sapucaia'),
+(10, 'professor dentinho', '789', 'rua dos santos', 201, '897', 'Porto Alegre');
 
 -- --------------------------------------------------------
 
@@ -98,6 +96,26 @@ INSERT INTO `telefone` (`id_telefone`, `telefone`, `id_proprietario`) VALUES
 (4, '(00)0000', 3),
 (5, '(00)0000', 4),
 (6, '(00)0000', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `senha` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `senha`) VALUES
+(1, 'antonio', 'ant05'),
+(2, 'alexandre', 'ale04');
 
 --
 -- Índices para tabelas despejadas
@@ -124,6 +142,12 @@ ALTER TABLE `telefone`
   ADD KEY `telefone_ibfk_1` (`id_proprietario`);
 
 --
+-- Índices para tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -137,13 +161,19 @@ ALTER TABLE `animais`
 -- AUTO_INCREMENT de tabela `proprietarios`
 --
 ALTER TABLE `proprietarios`
-  MODIFY `id_proprietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_proprietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `telefone`
 --
 ALTER TABLE `telefone`
   MODIFY `id_telefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas

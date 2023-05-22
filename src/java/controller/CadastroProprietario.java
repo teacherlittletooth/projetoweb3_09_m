@@ -14,6 +14,7 @@ import model.ProprietarioDAO;
 
 @WebServlet(name = "CadastroProprietario", urlPatterns = {"/CadastroProprietario"})
 public class CadastroProprietario extends HttpServlet {
+    private int id; 
     private String nome;
     private String cpf;
     private String logradouro;
@@ -25,6 +26,10 @@ public class CadastroProprietario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        //Verificando a existência do ID
+        if(request.getParameter("id")!=null) {
+            this.id = Integer.parseInt(request.getParameter("id"));
+        }
         //Recebendo parâmetros vindos do formulário de cadastro
         this.nome = request.getParameter("nome");
         this.cpf = request.getParameter("cpf");
@@ -45,9 +50,17 @@ public class CadastroProprietario extends HttpServlet {
         );
         
         try {
-            ProprietarioDAO pdao = new ProprietarioDAO();
-            pdao.insertProprietario(p);
-            response.sendRedirect("listar.jsp");
+            if(request.getParameter("id")==null) {
+            
+                ProprietarioDAO pdao = new ProprietarioDAO();
+                pdao.insertProprietario(p);
+                response.sendRedirect("listar.jsp");
+            } else {
+                p.setIdProprietario(this.id);
+                ProprietarioDAO pdao = new ProprietarioDAO();
+                pdao.updateProprietario(p);
+                response.sendRedirect("listar.jsp");
+            }
             
         } catch(SQLException | ClassNotFoundException erro) {
         

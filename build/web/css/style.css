@@ -14,3 +14,42 @@ input[type="submit"] {
     cursor: pointer;
     margin-top: 20px;
 }
+
+table,tr,td,th{
+    background-color: grey;
+    color: white;
+    border-radius: 5px;
+}
+
+.item-home {
+    background-color: yellowgreen;
+    border: solid 1px;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20pt;
+    cursor: pointer;
+}
+
+.item-home:hover {
+    background-color: green;
+    color: white;
+    border: solid 3px;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20pt;
+    cursor: pointer;
+}
+
+#menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#welcome {
+    display: flex;
+    flex
+    flex-direction: row;
+    align-content: space-evenly;
+}
